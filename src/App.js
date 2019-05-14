@@ -1,11 +1,32 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 
-function App() {
-  return (
-    <div className="App">
-      <h1>Hello World</h1>
-    </div>
-  );
+import './config/reactotron';
+
+import GlobalStyle from './styles/global';
+
+import { Wrapper, Container, Content } from './styles/components';
+import Routes from './routes';
+import store from './store';
+
+class App extends Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <BrowserRouter>
+          <GlobalStyle />
+          <Wrapper>
+            <Container>
+              <Content>
+                <Routes />
+              </Content>
+            </Container>
+          </Wrapper>
+        </BrowserRouter>
+      </Provider>
+    );
+  }
 }
 
 export default App;
