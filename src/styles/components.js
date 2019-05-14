@@ -16,9 +16,8 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
 
-  background: linear-gradient(to bottom, #414141 0%, #1e1e1e 100%), transparent;
-  background-size: 100% 250px, 100%;
-  background-repeat: no-repeat;
-  background-position: top;
+  background-color: #8ec5fc;
+  background-image: linear-gradient(62deg, #8ec5fc 0%, #e0c3fc 100%);
+
   padding: 0 20px;
 `;
