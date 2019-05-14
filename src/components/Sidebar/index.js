@@ -34,7 +34,7 @@ export default class Sidebar extends Component {
               <span>MENU</span>
             </li>
             <li>
-              <a href="">Atividades</a>
+              <Link to="/activities">Atividades</Link>
             </li>
             <li>
               <a href="">Suprimentos</a>

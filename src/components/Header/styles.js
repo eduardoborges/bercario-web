@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  height: 76px;
+  height: 96px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -9,7 +9,6 @@ export const Container = styled.div`
   background-image: linear-gradient(30deg, #8ec5fc 0%, #e0c3fc 100%);
 
   padding: 12px;
-  border-bottom: 1px solid #e0c3fc;
 `;
 
 export const Logo = styled.div`
@@ -28,7 +27,7 @@ export const Logo = styled.div`
 
     span {
       font-size: 13px;
-      color: #fff;
+      color: #000;
     }
 
     small {
@@ -48,11 +47,13 @@ export const Alert = styled.div`
 export const User = styled.div`
   display: flex;
   align-items: center;
-  font-size: 13px;
+  font-size: 16px;
+  margin-right: 15px;
+  color: #333;
   img {
-    width: 32px;
-    height: 32px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
-    margin-right: 5px;
+    margin-right: 15px;
   }
 `;
