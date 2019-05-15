@@ -15,10 +15,10 @@ html, body, #root {
 body {
     text-rendering: optimizeLegibility !important;
     -webkit-font-smoothing: antialiased !important;
-    background: #1E1E1E;
+    background-color: #f3f3f3;
     text-rendering: optimizeLegibility !important;
     font-family: 'Montserrat', sans-serif;
-    color: #000;
+    color: #333;
 }
 
 button {

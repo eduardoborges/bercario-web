@@ -6,7 +6,8 @@ export const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   background-color: #8ec5fc;
-  background-image: linear-gradient(30deg, #8ec5fc 0%, #e0c3fc 100%);
+  background-image: linear-gradient(30deg, #e0c3fc 0%, #8ec5fc 100%);
+  box-shadow: inset 0px -3px 11px -7px rgba(0, 0, 0, 0.84);
 
   padding: 12px;
 `;
@@ -17,7 +18,7 @@ export const Logo = styled.div`
   width: 220px;
 
   img {
-    width: 195px;
+    width: 172px;
   }
 
   div {
@@ -48,12 +49,14 @@ export const User = styled.div`
   display: flex;
   align-items: center;
   font-size: 16px;
+  font-weight: 300;
   margin-right: 15px;
   color: #333;
   img {
-    width: 44px;
-    height: 44px;
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
     margin-right: 15px;
+    border: 2px solid #f3f3f3;
   }
 `;

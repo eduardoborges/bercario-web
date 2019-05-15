@@ -1,12 +1,15 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Dash from '../pages/dash';
-import Activity from '../pages/activity';
+import ActivityList from '../pages/activityList';
+import ActivityForm from '../pages/activityForm';
 
 const Routes = () => (
   <Switch>
     <Route exact path="/" component={Dash} />
-    <Route path="/activities" component={Activity} />
+    <Route path="/activities" exact component={ActivityList} />
+    <Route path="/activities/create" component={ActivityForm} />
+    <Route path="/activities/edit/:id" component={ActivityForm} />
   </Switch>
 );
 

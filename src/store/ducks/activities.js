@@ -1,12 +1,11 @@
+import Immutable from 'seamless-immutable';
+
 export const Types = {
   GET_REQUEST: 'activities/GET_REQUEST',
   GET_SUCCESS: 'activities/GET_SUCCESS',
 };
 
-const INITIAL_STATE = {
-  data: [],
-  loading: false,
-};
+const INITIAL_STATE = Immutable({ data: [], loading: false });
 
 export default function activities(state = INITIAL_STATE, action) {
   switch (action.type) {

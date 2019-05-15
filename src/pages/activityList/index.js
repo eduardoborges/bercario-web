@@ -8,10 +8,12 @@ import { bindActionCreators } from 'redux';
 import { Creators as ActivitiesActions } from '../../store/ducks/activities';
 
 import {
-  Container, Title, List, Item,
+  Container, Title, List, Item, Button, Edit,
 } from './styles';
 
-class Activity extends Component {
+import EditIcon from '../../assets/images/edit.svg';
+
+class ActivityList extends Component {
   componentDidMount() {
     this.props.getActivitiesRequest();
   }
@@ -20,12 +22,16 @@ class Activity extends Component {
     return (
       <Container>
         <Title>Atividades</Title>
+        <div>
+          <Button to="/activities/create">Novo</Button>
+        </div>
 
         <List cellPadding={0} cellSpacing={0}>
           <thead>
             <th>#</th>
             <th>Título</th>
             <th>Descrição</th>
+            <th />
           </thead>
 
           <tbody>
@@ -39,6 +45,11 @@ class Activity extends Component {
                   <td />
                   <td>{activity.title}</td>
                   <td>{activity.description}</td>
+                  <td>
+                    <Edit to={`/activities/edit/${activity.id}`}>
+                      <img src={EditIcon} alt="Editar" />
+                    </Edit>
+                  </td>
                 </Item>
               ))
             )}
@@ -58,4 +69,4 @@ const mapDispatchToProps = dispatch => bindActionCreators(ActivitiesActions, dis
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(Activity);
+)(ActivityList);

@@ -7,9 +7,33 @@ import { Spinner } from '../../components/Loading/styles';
 export const Container = styled.div`
   flex: 1;
   margin-top: 40px;
+  padding-right: 10px;
   display: flex;
   flex-direction: column;
   overflow-y: auto;
+`;
+
+export const Button = styled(Link)`
+  background-image: linear-gradient(to right, #6441a5 0%, #2a0845 51%, #6441a5 100%);
+  height: 32px;
+  width: 96px;
+  text-transform: uppercase;
+  text-decoration: none;
+  justify-content: center;
+  transition: 0.5s;
+  background-size: 200% auto;
+  border-radius: 24px;
+  color: #fff;
+  line-height: 32px;
+  border: 0;
+  margin-top: 10px;
+  font-size: 14px;
+  letter-spacing: 1.11px;
+  display: flex;
+
+  &:hover {
+    background-position: right center;
+  }
 `;
 
 export const Title = styled.h1`
@@ -42,6 +66,12 @@ export const List = styled.table`
     &:last-child {
       text-align: left;
     }
+  }
+`;
+
+export const Edit = styled(Link)`
+  img {
+    height: 20px;
   }
 `;
 

@@ -4,9 +4,8 @@ import { Spinner } from '../Loading/styles';
 export const Container = styled.aside`
   height: 100%;
   width: 240px;
-  background-color: #8ec5fc;
-  background-image: linear-gradient(30deg, #e0c3fc 0%, #8ec5fc 100%);
-  color: #000;
+  background-color: #f9f9f9;
+  background-image: linear-gradient(0deg, #8ec5fc 0%, #dbc3fc 100%);
 
   display: flex;
   flex-direction: column;
@@ -36,7 +35,7 @@ export const MainNavItem = styled.li`
   a {
     color: inherit;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 18px;
     line-height: 32px;
     font-weight: ${props => (props.main ? 'bold' : 'normal')};
 
@@ -67,7 +66,7 @@ export const Nav = styled.ul`
     a {
       color: inherit;
       text-decoration: none;
-      font-size: 13px;
+      font-size: 1em;
       line-height: 32px;
       font-weight: ${props => (props.main ? 'bold' : 'normal')};
 
