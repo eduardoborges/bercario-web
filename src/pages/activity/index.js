@@ -7,17 +7,43 @@ import { bindActionCreators } from 'redux';
 
 import { Creators as ActivitiesActions } from '../../store/ducks/activities';
 
-import { Container, Title } from './styles';
+import {
+  Container, Title, List, Item,
+} from './styles';
 
 class Activity extends Component {
+  componentDidMount() {
+    this.props.getActivitiesRequest();
+  }
+
   render() {
-    console.log(this.props.activities.data);
     return (
       <Container>
         <Title>Atividades</Title>
-        {this.props.activities.data.map(activity => (
-          <p>{activity}</p>
-        ))}
+
+        <List cellPadding={0} cellSpacing={0}>
+          <thead>
+            <th>#</th>
+            <th>Título</th>
+            <th>Descrição</th>
+          </thead>
+
+          <tbody>
+            {!this.props.activities.data ? (
+              <tr>
+                <td colSpan={3}>Sem Registros</td>
+              </tr>
+            ) : (
+              this.props.activities.data.map(activity => (
+                <Item key={activity.id}>
+                  <td />
+                  <td>{activity.title}</td>
+                  <td>{activity.description}</td>
+                </Item>
+              ))
+            )}
+          </tbody>
+        </List>
       </Container>
     );
   }

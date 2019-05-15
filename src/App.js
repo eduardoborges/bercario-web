@@ -6,7 +6,6 @@ import './config/reactotron';
 
 import GlobalStyle from './styles/global';
 import Sidebar from './components/Sidebar';
-import Menu from './components/Menu';
 
 import { Wrapper, Container, Content } from './styles/components';
 import Routes from './routes';
@@ -24,7 +23,6 @@ class App extends Component {
             <Container>
               <Sidebar />
               <Content>
-                <Menu />
                 <Routes />
               </Content>
             </Container>

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Container, Search, User } from './styles';
+import { Container, Search } from './styles';
 
 const Menu = () => (
   <Container>

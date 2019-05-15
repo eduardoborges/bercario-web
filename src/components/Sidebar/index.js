@@ -9,6 +9,7 @@ import Appoinment from '../../assets/images/appointment.svg';
 import Diary from '../../assets/images/diary.svg';
 import Students from '../../assets/images/baby.svg';
 import Loading from '../Loading';
+import Menu from '../Menu';
 
 export default class Sidebar extends Component {
   render() {

@@ -18,7 +18,7 @@ export function* getActivities() {
     |--------------------------------------------------
     */
     const response = yield call(api.get, '/activities');
-    console.log(response);
+    console.tron.log(response);
     /**
     |--------------------------------------------------
     | PUT é utilizado para disparar uma Action e

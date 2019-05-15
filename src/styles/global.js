@@ -18,7 +18,7 @@ body {
     background: #1E1E1E;
     text-rendering: optimizeLegibility !important;
     font-family: 'Montserrat', sans-serif;
-    color: #fff;
+    color: #000;
 }
 
 button {
