@@ -18,11 +18,12 @@ import Loading from '../../components/Loading';
 import EditIcon from '../../assets/images/edit.svg';
 
 class ActivityList extends Component {
-  componentDidMount() {
+  // era isso
+  componentWillMount() {
     this.props.getActivitiesRequest();
   }
 
-  renderDetails = () => (
+  renderDetails = (data = []) => (
     <Container>
       <Title>Atividades</Title>
       <div>
@@ -39,12 +40,12 @@ class ActivityList extends Component {
           </tr>
         </thead>
         <tbody>
-          {!this.props.activities.data.length ? (
+          {!data.length ? (
             <tr>
               <td colSpan={4}>Sem Registros</td>
             </tr>
           ) : (
-            this.props.activities.data.map(activity => (
+            data.map(activity => (
               <Item key={activity.id}>
                 <td />
                 <td>{activity.title}</td>
@@ -63,12 +64,14 @@ class ActivityList extends Component {
   );
 
   render() {
-    return this.props.activities.loading ? (
+    const { loading, data } = this.props.activities;
+
+    return loading ? (
       <Container loading>
         <Loading />
       </Container>
     ) : (
-      this.renderDetails()
+      this.renderDetails(data)
     );
   }
 }
