@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://localhost:5555/',
+  baseURL: 'http://api.azcode.com.br/',
 });
 
 export default api;
