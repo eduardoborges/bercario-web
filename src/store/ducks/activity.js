@@ -11,7 +11,7 @@ export const Types = {
 
 const INITIAL_STATE = Immutable({ data: {}, loading: false });
 
-export default function Activity(state = INITIAL_STATE, action) {
+export default function activity(state = INITIAL_STATE, action) {
   switch (action.type) {
     case Types.GET_ACTIVITY:
       return { ...state, loading: true };

@@ -13,14 +13,23 @@ import {
   Container, Title, Formulary, Button, Field,
 } from './styles';
 
+import Loading from '../../components/Loading';
+
 const schema = Yup.object().shape({
   title: Yup.string().required('* Campo Nome é Obrigatório'),
   description: Yup.string().required('* Campo Descrição é Obrigatório'),
 });
 
 class ActivityForm extends Component {
-  loadData = (id) => {
-    const response = this.props.getActivity(id);
+  componentDidMount() {
+    if (this.props.match.params.id) {
+      this.loadData();
+    }
+  }
+
+  loadData = () => {
+    const { id } = this.props.match.params;
+    this.props.getActivity(id);
   };
 
   handleSubmit = (data) => {
@@ -29,43 +38,35 @@ class ActivityForm extends Component {
     this.props.history.push('/activities');
   };
 
-  componentDidMount() {
-    if (this.props.match.params.id) {
-      console.tron.log('tem id');
-      this.loadData(this.props.match.params.id);
-    }
-  }
-
-  componentDidUpdate(prevProps) {
-    console.log(prevProps);
-    if (prevProps.match.params.id !== this.props.match.params.id) {
-      this.loadData(this.props.match.params.id);
-    }
-  }
+  renderDetails = () => (
+    <Container>
+      <Title>Atividade</Title>
+      <div>
+        <Formulary
+          initialData={this.props.activity.data}
+          schema={schema}
+          onSubmit={this.handleSubmit}
+        >
+          <Field label="Nome" name="title" type="text" />
+          <Field label="Descrição" name="description" type="text" />
+          <Button type="submit">Enviar</Button>
+        </Formulary>
+      </div>
+    </Container>
+  );
 
   render() {
-    console.log(this.props);
-    return (
-      <Container>
-        <Title>Atividade</Title>
-        <div>
-          <Formulary
-            initialData={this.props.activity.data}
-            schema={schema}
-            onSubmit={this.handleSubmit}
-          >
-            <Field label="Nome" name="title" type="text" />
-            <Field label="Descrição" name="description" type="text" />
-            <Button type="submit">Enviar</Button>
-          </Formulary>
-        </div>
+    return this.props.activity.loading ? (
+      <Container loading>
+        <Loading />
       </Container>
+    ) : (
+      this.renderDetails()
     );
   }
 }
 
 const mapStateToProps = state => ({
-  activities: state.activities,
   activity: state.activity,
 });
 

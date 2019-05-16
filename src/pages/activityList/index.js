@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import { withRouter } from 'react-router-dom';
+
 import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
@@ -11,6 +13,8 @@ import {
   Container, Title, List, Item, Button, Edit,
 } from './styles';
 
+import Loading from '../../components/Loading';
+
 import EditIcon from '../../assets/images/edit.svg';
 
 class ActivityList extends Component {
@@ -18,44 +22,53 @@ class ActivityList extends Component {
     this.props.getActivitiesRequest();
   }
 
-  render() {
-    return (
-      <Container>
-        <Title>Atividades</Title>
-        <div>
-          <Button to="/activities/create">Novo</Button>
-        </div>
+  renderDetails = () => (
+    <Container>
+      <Title>Atividades</Title>
+      <div>
+        <Button to="/activities/create">Novo</Button>
+      </div>
 
-        <List cellPadding={0} cellSpacing={0}>
-          <thead>
+      <List cellPadding={0} cellSpacing={0}>
+        <thead>
+          <tr>
             <th>#</th>
             <th>Título</th>
             <th>Descrição</th>
-            <th />
-          </thead>
+            <th>#</th>
+          </tr>
+        </thead>
+        <tbody>
+          {!this.props.activities.data.length ? (
+            <tr>
+              <td colSpan={4}>Sem Registros</td>
+            </tr>
+          ) : (
+            this.props.activities.data.map(activity => (
+              <Item key={activity.id}>
+                <td />
+                <td>{activity.title}</td>
+                <td>{activity.description}</td>
+                <td>
+                  <Edit to={`/activities/edit/${activity.id}`}>
+                    <img src={EditIcon} alt="Editar" />
+                  </Edit>
+                </td>
+              </Item>
+            ))
+          )}
+        </tbody>
+      </List>
+    </Container>
+  );
 
-          <tbody>
-            {!this.props.activities.data ? (
-              <tr>
-                <td colSpan={3}>Sem Registros</td>
-              </tr>
-            ) : (
-              this.props.activities.data.map(activity => (
-                <Item key={activity.id}>
-                  <td />
-                  <td>{activity.title}</td>
-                  <td>{activity.description}</td>
-                  <td>
-                    <Edit to={`/activities/edit/${activity.id}`}>
-                      <img src={EditIcon} alt="Editar" />
-                    </Edit>
-                  </td>
-                </Item>
-              ))
-            )}
-          </tbody>
-        </List>
+  render() {
+    return this.props.activities.loading ? (
+      <Container loading>
+        <Loading />
       </Container>
+    ) : (
+      this.renderDetails()
     );
   }
 }
@@ -66,7 +79,9 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => bindActionCreators(ActivitiesActions, dispatch);
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(ActivityList);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps,
+  )(ActivityList),
+);

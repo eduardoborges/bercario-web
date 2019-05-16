@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { Form, Input } from '@rocketseat/unform';
 
@@ -11,6 +11,18 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   overflow-y: auto;
+
+  ${Spinner} {
+    height: 64px;
+  }
+
+  ${props => props.loading
+    && css`
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    `}
 `;
 
 export const Button = styled.button`
